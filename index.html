@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Noticias al Día</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>NOTICIAS AL DÍA</h1>
+        <p>Portal de noticias</p>
+
+        <nav>
+            <a href="index.html" onclick="cargarPagina('inicio.html'); return false;">Inicio</a> |
+            <a href="nacionales.html" onclick="cargarPagina('nacionales.html'); return false;">Nacionales</a> |
+            <a href="deportes.html" onclick="cargarPagina('deportes.html'); return false;">Deportes</a> |
+            <a href="espectaculos.html" onclick="cargarPagina('espectaculos.html'); return false;">Espectáculos</a> |
+            <a href="cultura.html" onclick="cargarPagina('cultura.html'); return false;">Cultura</a> |
+            <a href="contacto.html" onclick="cargarPagina('contacto.html'); return false;">Contacto</a>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+        <div id="contenido">
+            <h2>Bienvenidos a Noticias al Día</h2>
+            <p>
+                Selecciona una sección del menú para consultar las noticias.
+            </p>
+        </div>
+    </main>
+
+    <hr>
+
+    <footer>
+        <h3>Noticias al Día</h3>
+        <p>Portal de información y actualidad</p>
+        <p>&copy; 2026 Noticias al Día</p>
+    </footer>
+
+    <script>
+        function cargarPagina(pagina) {
+
+            fetch(pagina)
+                .then(respuesta => respuesta.text())
+                .then(datos => {
+                    document.getElementById("contenido").innerHTML = datos;
+                })
+                .catch(error => {
+                    document.getElementById("contenido").innerHTML =
+                        "<h2>Error</h2><p>No se pudo cargar la sección.</p>";
+                });
+        }
+    </script>
+
+</body>
+</html>
